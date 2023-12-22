@@ -104,9 +104,11 @@ public class Service {
         for (Model.State state: Application.finishStates) {
             int index = mapIndexes.get(state);
             for (i = 0; i < index; i++) {
+                if (Application.finishStates.contains(states[i])) continue;
                 Application.table[index][i] = true; // marked 'X'
             }
             for (i = index + 1; i < states.length; i++) {
+                if (Application.finishStates.contains(states[i])) continue;
                 Application.table[i][index] = true; // marked 'X'
             }
         }
@@ -186,6 +188,11 @@ public class Service {
         Set<Model.StateTransition> set = new LinkedHashSet<>(Application.stateTransitions);
         Application.stateTransitions.clear();
         Application.stateTransitions.addAll(set);
+
+        // Update finish states
+        Set<Model.State> set0 = new LinkedHashSet<>(Application.finishStates);
+        Application.finishStates.clear();
+        Application.finishStates.addAll(set0);
 
         View.printAfterMergeStates();
     }

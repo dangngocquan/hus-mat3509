@@ -22,6 +22,19 @@ public class Model {
         }
 
         @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            State state = (State) o;
+            return toString().compareTo(state.toString()) == 0;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(toString());
+        }
+
+        @Override
         public int compareTo(State o) {
             List<String> thisClone = new LinkedList<>(this.names);
             List<String> thatClone = new LinkedList<>(o.names);
