@@ -1,16 +1,9 @@
 package dfa_minimization;
 
-import java.util.List;
-import java.util.Map;
+import dfa_minimization.models.Automata;
 
 public class Application {
-    public static Map<String, Model.State> mapStates;
-    public static Map<String, Model.CharacterInput> mapCharacters;
-    public static List<Model.StateTransition> stateTransitions;
-    public static Model.State initialState;
-    public static List<Model.State> finishStates;
-    public static List<Model.State> unreachableStates;
-    public static boolean[][] table;
+    public static Automata automata;
     private final Controller controller;
 
     public Application() {
@@ -19,7 +12,7 @@ public class Application {
 
     public void run() {
         controller.printInputForm();
-        controller.createDataFromKeyboard();
-        controller.solve();
+        controller.createAutomataFromKeyboard();
+        controller.minimizationAutomata();
     }
 }

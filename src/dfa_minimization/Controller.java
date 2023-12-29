@@ -4,14 +4,14 @@ public class Controller {
     public void printInputForm() {
         View.printInputForm();
     }
-    public void createDataFromKeyboard() {
-        Service.createDataFromKeyboard();
-        View.printDataOfAutomata();
+    public void createAutomataFromKeyboard() {
+        Application.automata = Service.createAutomataFromKeyboard();
+        View.printDataOfAutomata(Application.automata);
     }
 
-    public void solve() {
-        Service.removeUnreachableState();
-        Service.minimizationAndPrintTablePerStep();
-        Service.mergeStates();
+    public void minimizationAutomata() {
+        Service.removeUnreachableState(Application.automata);
+        Service.minimizationAndPrintTablePerStep(Application.automata);
+        Service.mergeStates(Application.automata);
     }
 }
