@@ -1,4 +1,4 @@
-package dfa_minimization;
+package midterm.nfa_to_dfa;
 
 public class Main {
     public static void main(String[] args) {

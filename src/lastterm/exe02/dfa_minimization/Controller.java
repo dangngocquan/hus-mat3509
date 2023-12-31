@@ -1,4 +1,4 @@
-package dfa_minimization;
+package lastterm.exe02.dfa_minimization;
 
 public class Controller {
     public void printInputForm() {

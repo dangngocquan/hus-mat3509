@@ -1,4 +1,4 @@
-package nfa_to_dfa;
+package lastterm.exe02.dfa_minimization;
 
 public class Main {
     public static void main(String[] args) {

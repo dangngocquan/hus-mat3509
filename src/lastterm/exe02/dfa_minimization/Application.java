@@ -1,6 +1,6 @@
-package dfa_minimization;
+package lastterm.exe02.dfa_minimization;
 
-import dfa_minimization.models.Automata;
+import lastterm.exe02.dfa_minimization.models.Automata;
 
 public class Application {
     public static Automata automata;

@@ -1,4 +1,4 @@
-package nfa_to_dfa;
+package midterm.nfa_to_dfa;
 
 public class Controller {
     public void printInputForm() {

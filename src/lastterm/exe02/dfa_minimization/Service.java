@@ -1,9 +1,9 @@
-package dfa_minimization;
+package lastterm.exe02.dfa_minimization;
 
-import dfa_minimization.models.Automata;
-import dfa_minimization.models.CharacterInput;
-import dfa_minimization.models.State;
-import dfa_minimization.models.StateTransition;
+import lastterm.exe02.dfa_minimization.models.Automata;
+import lastterm.exe02.dfa_minimization.models.CharacterInput;
+import lastterm.exe02.dfa_minimization.models.State;
+import lastterm.exe02.dfa_minimization.models.StateTransition;
 
 import java.util.*;
 

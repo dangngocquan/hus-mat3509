@@ -1,4 +1,4 @@
-package dfa_minimization.models;
+package lastterm.exe02.dfa_minimization.models;
 
 public class CharacterInput implements Comparable<CharacterInput> {
     public String name;

@@ -1,4 +1,4 @@
-package dfa_minimization.models;
+package lastterm.exe02.dfa_minimization.models;
 
 import java.util.Collections;
 import java.util.LinkedList;

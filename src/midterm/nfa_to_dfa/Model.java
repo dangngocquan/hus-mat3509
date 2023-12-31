@@ -1,4 +1,4 @@
-package nfa_to_dfa;
+package midterm.nfa_to_dfa;
 
 import java.util.Collections;
 import java.util.LinkedList;
