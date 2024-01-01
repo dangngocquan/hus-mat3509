@@ -1,4 +1,4 @@
-package lastterm.exe02.dfa_minimization;
+package lastterm.exe01.dfa_minimization;
 
 public class Main {
     public static void main(String[] args) {
