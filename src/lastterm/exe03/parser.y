@@ -14,6 +14,9 @@ int number_variables = 0;
 int number_operations = 0;
 Variable symbolTable[100];
 
+void yyerror(const char *s);
+int yylex(void);
+
 %}
 
 %union {
@@ -23,27 +26,27 @@ Variable symbolTable[100];
 
 %token <num> NUM
 %token <var_name> VAR
-%type <num> statement
+%type <num> program
 %type <num> assignment
 %type <num> expression
+%type <num> variable
 %type <num> value
 %type <num> value_or_variable
-%type <num> variable
 %type <num> mul_div_mod_expression
 
 %%
 
-statement:   /* empty */
-    | assignment '\n' statement { 
-        $$ = $1;
-    }
-    | expression '\n' { 
+program:   
+    assignment '\n' 
+    assignment '\n' 
+    assignment '\n' 
+    expression '\n' { 
         if (number_variables != REQUIREMENTS_NUMBER_VARIABLES) {
             yyerror("You must create enought variables.");
         } else if (number_operations != REQUIREMENTS_NUMBER_OPERATIONS) {
             yyerror("THe expression must has 3 variables and 2 operations.");
         } else {
-            printf("Result: %d\n", $1); 
+            printf("Result: %d\n", $7); 
             exit(EXIT_FAILURE);
         }
     }
@@ -101,10 +104,16 @@ mul_div_mod_expression: value_or_variable
         number_operations++;
     }
     | mul_div_mod_expression '/' value_or_variable {
+        if ($3 == 0) {
+            yyerror("Divide by zero.");
+        }
         $$ = $1 / $3;
         number_operations++;
     }
     | mul_div_mod_expression '%' value_or_variable {
+        if ($3 == 0) {
+            yyerror("Modulo by zero.");
+        }
         $$ = $1 % $3;
         number_operations++;
     }
