@@ -17,6 +17,8 @@ Variable symbolTable[100];
 void yyerror(const char *s);
 int yylex(void);
 
+extern FILE* yyin;
+
 %}
 
 %union {
@@ -30,24 +32,31 @@ int yylex(void);
 %type <num> assignment
 %type <num> expression
 %type <num> variable
-%type <num> value
-%type <num> value_or_variable
 %type <num> mul_div_mod_expression
+
+%left '+' '-'
+%left '*' '/'
+%left '%'
 
 %%
 
 program:   
-    assignment '\n' 
-    assignment '\n' 
-    assignment '\n' 
-    expression '\n' { 
+    assignment '\n' assignment '\n' assignment '\n' expression { 
         if (number_variables != REQUIREMENTS_NUMBER_VARIABLES) {
             yyerror("You must create enought variables.");
         } else if (number_operations != REQUIREMENTS_NUMBER_OPERATIONS) {
-            yyerror("THe expression must has 3 variables and 2 operations.");
+            yyerror("The expression must has 3 variables and 2 operations.");
         } else {
-            printf("Result: %d\n", $7); 
-            exit(EXIT_FAILURE);
+            FILE* output_file = fopen("output.txt", "w");
+            if (!output_file) {
+                perror("Error opening output file");
+                exit(EXIT_FAILURE);
+            }
+
+            fprintf(output_file, "Result: %d\n", $7); 
+            fclose(output_file);
+
+            exit(EXIT_SUCCESS);
         }
     }
     ;
@@ -68,8 +77,7 @@ assignment: VAR '=' NUM {
         }
     }
 
-expression: value_or_variable
-    | mul_div_mod_expression
+expression: mul_div_mod_expression
     | expression '+' mul_div_mod_expression { 
         $$ = $1 + $3; 
         number_operations++;
@@ -78,9 +86,6 @@ expression: value_or_variable
         $$ = $1 - $3;
         number_operations++; 
     }
-    
-    
-value: NUM
 
 variable: VAR {
     int i;
@@ -96,21 +101,19 @@ variable: VAR {
     }
 }
 
-value_or_variable: value | variable 
-
-mul_div_mod_expression: value_or_variable
-    | mul_div_mod_expression '*' value_or_variable {
+mul_div_mod_expression: variable
+    | mul_div_mod_expression '*' variable {
         $$ = $1 * $3;
         number_operations++;
     }
-    | mul_div_mod_expression '/' value_or_variable {
+    | mul_div_mod_expression '/' variable {
         if ($3 == 0) {
             yyerror("Divide by zero.");
         }
         $$ = $1 / $3;
         number_operations++;
     }
-    | mul_div_mod_expression '%' value_or_variable {
+    | mul_div_mod_expression '%' variable {
         if ($3 == 0) {
             yyerror("Modulo by zero.");
         }
@@ -128,6 +131,17 @@ void yyerror(const char *s) {
 }
 
 int main() {
+    FILE* file = fopen("input.txt", "r");  // Open the input file for reading
+    if (!file) {
+        perror("Error opening file");
+        return EXIT_FAILURE;
+    }
+
+    yyin = file;  // Set the global input file pointer
+
     yyparse();
+
+    fclose(file);  // Close the input file
+
     return 0;
 }

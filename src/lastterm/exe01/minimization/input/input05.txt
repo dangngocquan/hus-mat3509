@@ -1,0 +1,14 @@
+11
+A x B
+A y C
+B x A
+B y D
+B z C
+C x D
+C y A
+C z B
+D x D
+D y A
+D z B
+A
+B D

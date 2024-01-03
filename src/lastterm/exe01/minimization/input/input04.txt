@@ -1,0 +1,20 @@
+17
+P x Q
+P y R
+Q x P
+Q y S
+Q z T
+R x T
+R y P
+R z Q
+R t S
+S x T
+S y P
+S z Q
+S t R
+T x T
+T y P
+T z Q
+T t S
+P
+Q S T

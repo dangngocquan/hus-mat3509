@@ -1,7 +1,7 @@
-package lastterm.exe01.dfa_minimization;
+package lastterm.exe01.minimization;
 
 public class Main {
     public static void main(String[] args) {
-        new Application().run();
+        new Application();
     }
 }

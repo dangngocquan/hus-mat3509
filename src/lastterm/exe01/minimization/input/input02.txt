@@ -1,0 +1,15 @@
+12
+A 0 B
+A 1 C
+B 0 A
+B 1 D
+C 0 E
+C 1 F
+D 0 E
+D 1 F
+E 0 E
+E 1 F
+F 0 F
+F 1 F
+A
+C D E

@@ -1,0 +1,19 @@
+16
+A 0 B
+A 1 F
+B 1 C
+B 0 G
+C 0 A
+C 1 C
+D 0 C
+D 1 G
+E 1 F
+E 0 H
+F 0 C
+F 1 G
+G 0 G
+G 1 E
+H 0 G
+H 1 C
+A
+C

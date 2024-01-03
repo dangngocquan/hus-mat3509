@@ -1,0 +1,22 @@
+19
+A 0 B
+A 1 C
+B 0 A
+B 1 D
+B 2 E
+C 0 E
+C 1 A
+C 2 B
+C 3 D
+D 0 E
+D 1 A
+D 2 B
+D 3 C
+D 4 E
+E 0 E
+E 1 A
+E 2 B
+E 3 C
+E 4 D
+B
+B D E
