@@ -1,4 +1,4 @@
-16
+22
 A 0 B
 A 1 F
 B 0 G
@@ -11,9 +11,15 @@ E 0 H
 E 1 F
 F 0 C
 F 1 G
-G 0 G
+G 0 I
 G 1 E
+I 1 T
+I 0 X
+T 1 I
+T 0 X
+X 1 I
+X 0 I
 H 0 G
 H 1 C
 A
-C
+C D

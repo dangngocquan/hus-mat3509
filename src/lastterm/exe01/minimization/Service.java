@@ -43,12 +43,15 @@ public class Service {
         sb.append(contentRowPattern(matrix[1], w, numberColumns)).append("\n");
         numberColumns++;
 
-        for (int i = 2; i < matrix.length; i++) {
+        for (int i = 2; i < matrix.length - 1; i++) {
             sb.append(lineRowPattern4(numberColumns, w)).append("\n");
             sb.append(contentRowPattern(matrix[i], w, numberColumns++)).append("\n");
         }
 
-        sb.append(lineRowPattern3(--numberColumns, w));
+        sb.append(lineRowPattern2(--numberColumns, w)).append("\n");
+        sb.append(contentRowPattern(matrix[matrix.length-1], w, numberColumns)).append("\n");
+
+        sb.append(lineRowPattern3(numberColumns, w));
 
         return sb.toString();
     }
@@ -136,7 +139,7 @@ public class Service {
 
     public static void writeFile(String contents) {
         // Check or create file if not exist
-        String pathFile = checkOrCreatePath("/src/lastterm/exe01/minimization/output", Config.fileNameOutput);
+        String pathFile = checkOrCreatePath("/src/output", Config.fileNameOutput);
 
         // Append content to file
         try {
@@ -153,7 +156,7 @@ public class Service {
 
     public static String[] readFile() {
         // Check or create file if not exist
-        String pathFile = checkOrCreatePath("/src/lastterm/exe01/minimization/input", Config.fileNameInput);
+        String pathFile = checkOrCreatePath("/src/input", Config.fileNameInput);
 
         // Get contents of file
         List<String> lines = new LinkedList<>();

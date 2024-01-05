@@ -188,6 +188,7 @@ public class Automata {
         // Remove unreachable states
         automata.states.removeAll(unreachableStates);
         for (State unreachableState: unreachableStates) automata.transitions.remove(unreachableState);
+        automata.finishStates.removeAll(unreachableStates);
 
         // Save process to file
         String contents = "\n\n" +
